@@ -1,0 +1,217 @@
+:root {
+  --bg: #0f1220;
+  --panel: #181c30;
+  --panel-2: #1f2440;
+  --text: #e8ebf5;
+  --muted: #9aa3c0;
+  --accent: #6c8cff;
+  --ok: #34d399;
+  --no: #f87171;
+  --warn: #fbbf24;
+  --border: #2a3050;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: radial-gradient(1200px 600px at 20% -10%, #1c2140 0%, var(--bg) 60%);
+  color: var(--text);
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+.site-header { text-align: center; padding: 2.2rem 1rem 1rem; }
+.site-header h1 { margin: 0; font-size: 1.7rem; letter-spacing: .3px; }
+.subtitle { margin: .3rem 0 1rem; color: var(--muted); }
+
+.banner {
+  display: inline-block;
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  background: #3b2412;
+  border: 1px solid #7c4a12;
+  color: #ffd9a0;
+  font-size: .9rem;
+  max-width: 60rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.1rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem 1.4rem;
+  align-self: start;
+}
+.panel h2 { margin: 0 0 .9rem; font-size: 1.12rem; }
+
+.badge {
+  font-size: .68rem;
+  background: var(--warn);
+  color: #2a1c00;
+  border-radius: 999px;
+  padding: .12rem .55rem;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+/* ---------- ketentuan ---------- */
+.terms-grid { display: grid; grid-template-columns: 1fr; gap: .7rem; margin: .8rem 0; }
+.terms-col { background: var(--panel-2); border-radius: 10px; padding: .7rem .9rem; }
+.terms-col h3 { margin: 0 0 .4rem; font-size: .95rem; }
+.terms-col ul { margin: 0; padding-left: 1.1rem; font-size: .9rem; color: var(--muted); }
+.terms-col li { margin: .22rem 0; }
+.terms-col.ok h3 { color: var(--ok); }
+.terms-col.no h3 { color: var(--no); }
+
+.technical { font-size: .85rem; color: var(--muted); margin: .4rem 0; }
+.warning {
+  font-size: .88rem;
+  background: #33270c;
+  border: 1px solid #6b5410;
+  color: #ffe08a;
+  padding: .55rem .7rem;
+  border-radius: 8px;
+  margin: .5rem 0 .9rem;
+}
+
+.agree {
+  display: flex;
+  gap: .6rem;
+  align-items: flex-start;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .7rem .8rem;
+  cursor: pointer;
+  font-size: .92rem;
+}
+.agree input { margin-top: .2rem; width: 1.05rem; height: 1.05rem; accent-color: var(--accent); }
+
+/* ---------- upload ---------- */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 1.6rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+  background: var(--panel-2);
+}
+.dropzone:hover, .dropzone:focus, .dropzone.dragover {
+  border-color: var(--accent);
+  background: #232a4d;
+  outline: none;
+}
+.dropzone p { margin: .2rem 0; }
+.hint { color: var(--muted); font-size: .85rem; }
+
+.preview-wrap { margin-top: .9rem; text-align: center; }
+.preview-wrap img {
+  max-width: 100%;
+  max-height: 260px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+button {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  padding: .6rem 1.1rem;
+  cursor: pointer;
+  transition: filter .15s, opacity .15s;
+}
+button:hover:not(:disabled) { filter: brightness(1.15); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+
+button.primary {
+  display: block;
+  width: 100%;
+  margin-top: .9rem;
+  background: var(--accent);
+  border-color: transparent;
+  color: #0b1020;
+  font-weight: 700;
+}
+button.ghost { margin-top: .7rem; font-size: .88rem; }
+
+.status { min-height: 1.2rem; font-size: .88rem; color: var(--muted); margin: .6rem 0 0; }
+.status.error-text { color: var(--no); }
+
+/* ---------- hasil ---------- */
+.empty { color: var(--muted); font-size: .92rem; }
+
+.winner {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  flex-wrap: wrap;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .7rem .9rem;
+}
+.trophy { font-size: 1.2rem; }
+.winner-label { font-size: 1.25rem; font-weight: 700; text-transform: capitalize; }
+.winner-conf { margin-left: auto; font-size: 1.15rem; font-weight: 700; color: var(--ok); }
+
+.bars { margin-top: .9rem; display: grid; gap: .5rem; }
+.bar-row { display: grid; grid-template-columns: 8.5rem 1fr 3.4rem; gap: .5rem; align-items: center; font-size: .86rem; }
+.bar-row .name { text-transform: capitalize; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.bar-track { background: var(--panel-2); border-radius: 999px; height: .65rem; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #9db4ff); border-radius: 999px; transition: width .5s ease; }
+.bar-row.top .name, .bar-row.top .pct { color: var(--text); font-weight: 700; }
+.bar-row .pct { text-align: right; color: var(--muted); }
+
+.face-check { font-size: .85rem; color: var(--ok); margin: .9rem 0 0; }
+.meta { font-size: .8rem; color: var(--muted); margin: .3rem 0 0; }
+
+.error {
+  background: #2c1620;
+  border: 1px solid #6d2a3a;
+  border-radius: 10px;
+  padding: .9rem 1rem;
+}
+.error strong { color: var(--no); font-size: .95rem; letter-spacing: .4px; }
+.error p { margin: .45rem 0 0; font-size: .92rem; }
+.error .ref { color: var(--warn); font-size: .85rem; }
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: .85rem;
+  padding: 1.5rem 1rem 2.5rem;
+}
+.site-footer a { color: var(--accent); }
+
+@media (min-width: 760px) {
+  /* Ketentuan di kiri (memanjang); Unggah & Hasil bertumpuk di kanan */
+  .layout {
+    grid-template-columns: minmax(340px, 1.05fr) minmax(340px, 1fr);
+    grid-template-areas:
+      "terms upload"
+      "terms result";
+    align-items: start;
+  }
+  .layout .panel:nth-child(1) { grid-area: terms; }
+  .layout .panel:nth-child(2) { grid-area: upload; }
+  .layout .panel:nth-child(3) { grid-area: result; }
+}
+
+@media (max-width: 720px) {
+  .bar-row { grid-template-columns: 6.5rem 1fr 3rem; }
+}

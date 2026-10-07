@@ -1,0 +1,6 @@
+{
+  "dalle": 0,
+  "gemini": 1,
+  "midjourney": 2,
+  "stable_diffusion": 3
+}

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Konfigurasi rahasia
+.env
+
+# Artefak model besar (jangan dikomit; simpan di storage/ atau LFS)
+*.keras
+*.h5
+*.onnx
+*.tflite
+# ... KECUALI model detektor wajah kecil yang wajib ada (±230 KB, Fase 0)
+!models/*.tflite
+
+# Runtime
+storage/uploads/* 
+!storage/uploads/.gitkeep
+storage/*.db
+storage/*.db-*
+*.log
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db

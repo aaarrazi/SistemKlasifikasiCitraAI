@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klasifikasi Citra AI Generator</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Klasifikasi Citra AI Generator</h1>
+    <p class="subtitle">Gemini &middot; DALL&middot;E &middot; Midjourney &middot; Stable Diffusion</p>
+    <div id="health-banner" class="banner" hidden role="status"></div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ============ KETENTUAN (wajib dibaca sebelum unggah) ============ -->
+    <section class="panel" aria-labelledby="terms-title">
+      <h2 id="terms-title">📜 Ketentuan Unggah <span class="badge">wajib</span></h2>
+      <p id="terms-intro">Model hanya dilatih pada citra <strong>satu wajah manusia</strong> dengan
+        posisi <strong>wajah sampai pundak</strong>. Gambar di luar batasan ini akan ditolak
+        dan tidak diklasifikasi.</p>
+
+      <div class="terms-grid">
+        <div class="terms-col ok">
+          <h3>✅ Diperbolehkan</h3>
+          <ul id="terms-allowed">
+            <li>Satu orang saja dalam gambar</li>
+            <li>Wajah terlihat jelas, cakupan wajah sampai pundak (head &amp; shoulders)</li>
+            <li>Wajah tidak tertutup masker/tangan/rambut dan tidak terpotong tepi frame</li>
+            <li>Pencahayaan cukup dan gambar tidak blur</li>
+          </ul>
+        </div>
+        <div class="terms-col no">
+          <h3>❌ Tidak diperbolehkan</h3>
+          <ul id="terms-prohibited">
+            <li>Lebih dari satu orang dalam satu gambar</li>
+            <li>Seluruh badan, atau close-up hanya sebagian wajah (mis. hanya mata)</li>
+            <li>Pemandangan, benda, hewan, logo, teks, meme, atau gambar tanpa wajah</li>
+            <li>Gambar gelap, buram, atau resolusi rendah</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="technical" id="terms-technical">Format: JPG / PNG / WEBP &middot; maks 10 MB &middot; sisi terpendek ≥ 224 px</p>
+      <p class="warning" id="terms-warning">⚠️ Hasil klasifikasi hanya berlaku untuk gambar dalam
+        batasan di atas. Gambar di luar batasan akan ditolak.</p>
+
+      <label class="agree" for="agree">
+        <input type="checkbox" id="agree">
+        <span id="agree-text">Saya memahami dan menyetujui ketentuan di atas.</span>
+      </label>
+    </section>
+
+    <!-- ============================ UNGGAH ============================ -->
+    <section class="panel" aria-labelledby="upload-title">
+      <h2 id="upload-title">Unggah gambar</h2>
+
+      <div id="dropzone" class="dropzone" tabindex="0" role="button"
+           aria-label="Pilih file gambar atau jatuhkan gambar di sini">
+        <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" hidden>
+        <p><strong>Jatuhkan gambar di sini</strong></p>
+        <p class="hint">atau klik untuk memilih &middot; JPG/PNG/WEBP &middot; maks 10 MB</p>
+      </div>
+
+      <div id="preview-wrap" class="preview-wrap" hidden>
+        <img id="preview" alt="Pratinjau gambar terpilih">
+        <button type="button" id="clear-btn" class="ghost">Ganti gambar</button>
+      </div>
+
+      <button type="button" id="submit-btn" class="primary" disabled>Klasifikasi</button>
+      <p id="upload-status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ============================ HASIL ============================= -->
+    <section class="panel" aria-labelledby="result-title">
+      <h2 id="result-title">Hasil prediksi</h2>
+
+      <div id="result-empty" class="empty">Belum ada gambar yang diklasifikasi.</div>
+
+      <div id="result-body" hidden>
+        <div class="winner">
+          <span class="trophy">🏆</span>
+          <span id="result-label" class="winner-label">—</span>
+          <span id="result-confidence" class="winner-conf">—</span>
+        </div>
+        <p id="result-note" class="status"></p>
+        <div id="bars" class="bars"></div>
+        <p id="face-check" class="face-check"></p>
+        <p id="result-meta" class="meta"></p>
+      </div>
+
+      <div id="result-error" class="error" hidden>
+        <strong id="error-code"></strong>
+        <p id="error-message"></p>
+        <p id="error-ref" class="ref"></p>
+        <button type="button" id="retry-btn" class="ghost">Unggah gambar lain</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Lihat <a href="/docs">dokumentasi API</a> &middot; status:
+      <a href="/health">/health</a></p>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

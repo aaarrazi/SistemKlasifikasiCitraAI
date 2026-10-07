@@ -1,0 +1,6 @@
+{
+  "DALLE": 0,
+  "GEMINI": 1,
+  "MIDJOURNEY": 2,
+  "STABLE_D": 3
+}

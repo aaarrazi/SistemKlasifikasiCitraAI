@@ -1,0 +1,19 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # 1 worker agar model .keras (+ detektor wajah) tidak dimuat berulang
+      # (lihat arsitektur.md §11.2)
+      STRICT_STARTUP: "true"
+      MAX_UPLOAD_MB: "10"
+      FACE_DETECTOR: "auto"
+      LOG_LEVEL: "INFO"
+      RATE_LIMIT_PER_MINUTE: "60"
+      BATCH_MAX_FILES: "10"
+      DATABASE_PATH: "/app/storage/history.db"
+    restart: unless-stopped
+    volumes:
+      # riwayat & file sementara (opsional)
+      - ./storage:/app/storage

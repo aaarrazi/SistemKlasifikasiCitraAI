@@ -1,0 +1,30 @@
+# =====================================================================
+# Backend (wajib)
+# =====================================================================
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pillow>=10.0
+numpy>=1.26
+python-dotenv>=1.0
+
+# =====================================================================
+# Deep Learning — FASE 0: butuh venv Python 3.11 / 3.12
+# TensorFlow BELUM mendukung Python 3.14 (kondisi mesin ini).
+# File model dibuat dengan keras 3.13.2 (lihat arsitektur.md A9).
+# =====================================================================
+keras==3.13.2
+tensorflow>=2.19,<2.23
+
+# =====================================================================
+# Face Gate (Tier 2 — validasi ketentuan sebelum inferensi)
+# =====================================================================
+mediapipe>=0.10.14
+# opencv-python>=4.9          # alternatif: detektor OpenCV DNN
+# python-magic>=0.4.27        # opsional: cek MIME nyata (Windows: python-magic-bin)
+
+# =====================================================================
+# Testing
+# =====================================================================
+pytest>=8.0
+httpx>=0.27

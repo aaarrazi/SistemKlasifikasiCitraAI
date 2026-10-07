@@ -1,0 +1,21 @@
+# Lingkungan & artefak build — jangan ikut ke dalam image
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.git
+.gitignore
+.env
+.env.example
+
+# Data runtime
+storage
+*.log
+
+# Repo & pengujian (tidak dibutuhkan saat runtime)
+tests
+*.md
+docker-compose.yml
+Dockerfile
+.dockerignore
